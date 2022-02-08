@@ -1,0 +1,36 @@
+//프로젝트 플러그인 의존성 관리
+buildscript {
+    ext { //전역변수 설정
+        springBootVersion = '2.1.7.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+//필수 플러그인 추가
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group 'com.jojoidu.book'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //그래들 7.0 버전 이상부터는 compile을 사용하지 않음
+    //compile('org.springframework.boot:spring-boot-starter-web')
+    //testCompile('org.springframework.boot:spring-boot-starter-test')
+
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+}
